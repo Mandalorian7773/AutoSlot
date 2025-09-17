@@ -6,7 +6,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#FFF7F1]">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8">
+      <div className="w-full max-w-md bg-[#FFF7F1] rounded-2xl p-8 flex flex-col items-center">
         {/* Icon */}
         <div className="flex justify-center mb-4">
           <div className="bg-[#E9F1FF] p-3 rounded-full">
@@ -35,8 +35,8 @@ export default function Login() {
         </p>
 
         {/* Card */}
-        <div className="bg-white border rounded-xl shadow-sm p-6">
-          <h3 className="text-lg font-medium text-center mb-1">Sign In</h3>
+        <div className="bg-white rounded-xl shadow-sm p-6 w-120">
+          <h3 className="text-xl font-bold text-center mb-1">Sign In</h3>
           <p className="text-gray-500 text-sm text-center mb-6">
             Enter your credentials to access your account
           </p>
@@ -44,12 +44,12 @@ export default function Login() {
           {/* Email */}
           <div className="mb-4">
             <label className="block text-sm mb-1">Email Address</label>
-            <div className="flex items-center border rounded-lg px-3 bg-[#FFF7F1]">
+            <div className="flex items-center border border-[#EDE4DC] rounded-lg px-3 bg-[#FFF7F1]">
               <Mail className="h-5 w-5 text-gray-400" />
               <input
                 type="email"
-                placeholder="your.email@college.edu"
-                className="flex-1 p-2 bg-transparent outline-none text-gray-700"
+                placeholder="your.email@college.edu.in"
+                className="flex-1 p-2 bg-transparent outline-none text-black"
               />
             </div>
           </div>
@@ -57,12 +57,12 @@ export default function Login() {
           {/* Password */}
           <div className="mb-4">
             <label className="block text-sm mb-1">Password</label>
-            <div className="flex items-center border rounded-lg px-3 bg-[#FFF7F1]">
+            <div className="flex items-center border border-[#EDE4DC] rounded-lg px-3 bg-[#FFF7F1]">
               <Lock className="h-5 w-5 text-gray-400" />
               <input
                 type="password"
                 placeholder="Enter your password"
-                className="flex-1 p-2 bg-transparent outline-none text-gray-700"
+                className="flex-1 p-2 bg-transparent outline-none text-black"
               />
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function Login() {
           {/* Role */}
           <div className="mb-6">
             <label className="block text-sm mb-1">Select Role</label>
-            <div className="flex items-center border rounded-lg px-3 bg-[#FFF7F1]">
+            <div className="flex items-center border border-[#EDE4DC] rounded-lg px-3 bg-[#FFF7F1]">
               <User className="h-5 w-5 text-gray-400" />
               <select
                 value={role}
@@ -99,3 +99,5 @@ export default function Login() {
     </div>
   );
 }
+
+
