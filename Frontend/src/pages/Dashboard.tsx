@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Header } from "../components/layout/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
@@ -61,27 +60,20 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header 
-        userRole={user.role} 
-        userName={user.name}
-        pendingRequests={recentRequests.filter(r => r.status === "pending").length}
-      />
-      
-      <main className="container mx-auto px-6 py-8">
-        <div className="space-y-8">
-          {/* Welcome Section */}
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-gray-900">Good morning, {user.name}!</h1>
-            <p className="text-gray-600">
-              Here's your schedule for today, {new Date().toLocaleDateString("en-US", { 
-                weekday: "long", 
-                year: "numeric", 
-                month: "long", 
-                day: "numeric" 
-              })}
-            </p>
-          </div>
+    <main className="container mx-auto px-6 py-8">
+      <div className="space-y-8">
+        {/* Welcome Section */}
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-gray-900">Good morning, {user.name}!</h1>
+          <p className="text-gray-600">
+            Here's your schedule for today, {new Date().toLocaleDateString("en-US", { 
+              weekday: "long", 
+              year: "numeric", 
+              month: "long", 
+              day: "numeric" 
+            })}
+          </p>
+        </div>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -242,6 +234,5 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
-    </div>
   );
 }
