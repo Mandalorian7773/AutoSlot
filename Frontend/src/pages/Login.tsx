@@ -86,7 +86,7 @@ export default function Login() {
           </div>
 
           {/* Sign In Button */}
-          <button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-2 rounded-lg font-medium">
+          <button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-2 rounded-lg font-medium cursor-pointer">
             Sign In
           </button>
 
