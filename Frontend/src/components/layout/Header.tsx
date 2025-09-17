@@ -35,7 +35,7 @@ export function Header({ userRole, userName, pendingRequests = 0 }: HeaderProps)
           <div className="h-8 w-8 rounded-lg bg-pink-500 flex items-center justify-center">
             <Calendar className="h-5 w-5 text-white" />
           </div>
-          <span className="font-semibold text-lg text-gray-900">TimetableApp</span>
+          <span className="font-semibold text-lg text-gray-900">AutoSlot</span>
         </Link>
 
         {/* Navigation */}
