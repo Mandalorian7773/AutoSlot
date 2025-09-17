@@ -1,8 +1,43 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Mail, Lock, User } from "lucide-react";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Dummy credentials
+    const validCredentials = {
+      email: "demo@college.edu",
+      password: "password123"
+    };
+
+    // Simulate API call delay
+    setTimeout(() => {
+      if (email === validCredentials.email && password === validCredentials.password && role) {
+        // Store user data in localStorage
+        const userData = {
+          name: "Arg",
+          email: email,
+          role: role === "hod" ? "HOD" : role.charAt(0).toUpperCase() + role.slice(1)
+        };
+        localStorage.setItem("user", JSON.stringify(userData));
+        
+        // Redirect to dashboard
+        navigate("/dashboard");
+      } else {
+        alert("Invalid credentials! Use demo@college.edu / password123");
+      }
+      setIsLoading(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#FFF7F1]">
@@ -49,7 +84,10 @@ export default function Login() {
               <input
                 type="email"
                 placeholder="your.email@college.edu.in"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 p-2 bg-transparent outline-none text-black"
+                required
               />
             </div>
           </div>
@@ -62,7 +100,10 @@ export default function Login() {
               <input
                 type="password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="flex-1 p-2 bg-transparent outline-none text-black"
+                required
               />
             </div>
           </div>
@@ -86,10 +127,23 @@ export default function Login() {
           </div>
 
           {/* Sign In Button */}
-          <button className="w-full bg-[#3B82F6] hover:bg-[#2563EB] text-white py-2 rounded-lg font-medium cursor-pointer">
-            Sign In
-          </button>
+          <form onSubmit={handleLogin}>
+            <button 
+              type="submit"
+              disabled={!email || !password || !role || isLoading}
+              className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-2 rounded-lg font-medium transition-colors"
+            >
+              {isLoading ? "Signing In..." : "Sign In"}
+            </button>
+          </form>
 
+          {/* Demo Credentials */}
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-xs text-blue-800 font-medium mb-1">Demo Credentials:</p>
+            <p className="text-xs text-blue-700">Email: demo@college.edu</p>
+            <p className="text-xs text-blue-700">Password: password123</p>
+          </div>
+          
           {/* Footer */}
           <p className="text-gray-400 text-xs text-center mt-4">
             Having trouble? Contact your system administrator
@@ -99,5 +153,3 @@ export default function Login() {
     </div>
   );
 }
-
-
