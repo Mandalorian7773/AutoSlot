@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Calendar, Clock } from "lucide-react";
+import WeeklyTimeTable from '../components/layout/WeeklyTimeTable';
 
 const Timetable = () => {
   return (
@@ -25,15 +26,10 @@ const Timetable = () => {
               Your complete weekly teaching timetable
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-center h-64 text-gray-500">
-              <div className="text-center space-y-2">
-                <Clock className="h-12 w-12 mx-auto text-gray-300" />
-                <p>Timetable content will be implemented here</p>
-                <p className="text-sm">This will show your weekly schedule grid</p>
-              </div>
-            </div>
-          </CardContent>
+          <div>
+            <WeeklyTimeTable />
+          </div>
+          
         </Card>
       </div>
     </main>
