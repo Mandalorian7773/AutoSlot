@@ -41,17 +41,17 @@ const Timetable: React.FC = () => {
   });
 
   return (
-    
-      <table className="w-full border-separate border-spacing-2 text-left text-sm">
+    <div className="overflow-x-auto">
+      <table className="min-w-[700px] sm:min-w-full border-separate border-spacing-2 text-left text-sm">
         <thead>
           <tr>
-            <th className="bg-[#faf4ec] text-[#3a3a3a] font-semibold rounded-lg px-4 py-3 w-50 text-center">
+            <th className="bg-[#faf4ec] text-[#3a3a3a] font-semibold rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-center min-w-[100px]">
               Time
             </th>
             {days.map((day) => (
               <th
                 key={day}
-                className="bg-[#fcd9a3] text-[#3a3a3a] font-semibold rounded-lg w-40  text-center"
+                className="bg-[#fcd9a3] text-[#3a3a3a] font-semibold rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-center min-w-[120px]"
               >
                 {day}
               </th>
@@ -61,7 +61,7 @@ const Timetable: React.FC = () => {
         <tbody>
           {times.map((time) => (
             <tr key={time}>
-              <td className="bg-[#faf4ec] text-[#3a3a3a] font-normal rounded-lg px-4 py-6 text-center">
+              <td className="bg-[#faf4ec] text-[#3a3a3a] font-normal rounded-lg px-3 py-3 sm:px-4 sm:py-6 text-center">
                 {time}
               </td>
               {days.map((day) => {
@@ -70,7 +70,7 @@ const Timetable: React.FC = () => {
                   return (
                     <td
                       key={day}
-                      className="bg-[#faf4ec] text-[#3a3a3a] font-semibold rounded-lg px-4 py-2 text-center"
+                      className="bg-[#faf4ec] text-[#3a3a3a] font-semibold rounded-lg px-3 py-3 sm:px-4 sm:py-4 text-center"
                     >
                       Break
                     </td>
@@ -79,15 +79,15 @@ const Timetable: React.FC = () => {
                 return (
                   <td
                     key={day}
-                    className="bg-[#f0f7fc] rounded-lg px-4 py-3 align-top"
+                    className="bg-[#f0f7fc] rounded-lg px-3 py-3 sm:px-4 sm:py-3 align-top"
                   >
-                    <p className="font-semibold text-[#3a3a3a] leading-tight">
+                    <p className="font-semibold text-[#3a3a3a] leading-tight text-xs sm:text-sm">
                       {cell.subject}
                     </p>
-                    <p className="text-[#8a8a8a] text-xs mt-1 leading-tight">
+                    <p className="text-[#8a8a8a] text-[10px] sm:text-xs mt-1 leading-tight">
                       {cell.teacher}
                     </p>
-                    <p className="text-[#3a7fc1] text-xs mt-1 leading-tight cursor-pointer">
+                    <p className="text-[#3a7fc1] text-[10px] sm:text-xs mt-1 leading-tight cursor-pointer">
                       {cell.room}
                     </p>
                   </td>
@@ -97,7 +97,7 @@ const Timetable: React.FC = () => {
           ))}
         </tbody>
       </table>
-  
+    </div>
   );
 };
 
