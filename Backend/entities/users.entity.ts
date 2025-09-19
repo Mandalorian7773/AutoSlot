@@ -1,28 +1,18 @@
-import { Schema, model, Document } from "mongoose";
+// entities/user.entity.ts
+// Import types from generated Prisma client
+import { Program, Semester, Role } from "../generated/prisma";
 
-export type Program = "B.Ed." | "M.Ed." | "FYUP" | "ITEP";
-export type Semester = "1st" | "2nd" | "3rd" | "4th" | "5th" | "6th";
-export type Role = "superadmin" | "teacher" | "HOD";
+// Re-export Prisma types
+export { Program, Semester, Role };
 
-export interface IUser extends Document {
+// You can also keep your original interface for compatibility if needed
+export interface IUser {
+  id?: number;               
   username: string;
   email: string;
-  password: string;
+  password?: string;         // Made optional since not used in signin
   programs: Program;
   semester: Semester;
   role: Role;
-  createdAt: Date;
+  created_at?: Date;          
 }
-
-const userSchema = new Schema<IUser>({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  programs: { type: String, enum: ["B.Ed.", "M.Ed.", "FYUP", "ITEP"], required: true },
-  semester: { type: String, enum: ["1st", "2nd", "3rd", "4th", "5th", "6th"], required: true },
-  role: { type: String, enum: ["superadmin", "teacher", "HOD"], default: "teacher" },
-  createdAt: { type: Date, default: Date.now },
-});
-
-const User = model<IUser>("User", userSchema);
-
-export default User;
