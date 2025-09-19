@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { getAllUsers, getUserById, signIn } from "../controllers/user.controller";
+import { getAllUsers, getUserById, signUp, signIn } from "../controllers/user.controller";
+import { isSuperAdmin } from "../middlewares/role.middleware";
 
 const userRouter: Router = Router();
 
-userRouter.get("/", getAllUsers);
-userRouter.get("/:id", getUserById);
+userRouter.post("/signup", signUp);
 userRouter.post("/signin", signIn);
+
+userRouter.get("/", isSuperAdmin, getAllUsers);
+userRouter.get("/:id", getUserById);
 
 export default userRouter;
