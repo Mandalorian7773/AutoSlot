@@ -10,7 +10,7 @@ export interface IUser {
   id?: number;               
   username: string;
   email: string;
-  password?: string;         // Made optional since not used in signin
+  password: string;     
   programs: Program;
   semester: Semester;
   role: Role;
