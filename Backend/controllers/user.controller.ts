@@ -55,6 +55,7 @@ export const getUserById = async (req: Request, res: Response): Promise<void> =>
 export const signUp = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, email, password, programs, semester, role } = req.body;
+    console.log("Incoming password:", password);
 
     // Check if user already exists
     const existingUser = await prisma.teacher.findUnique({
@@ -69,6 +70,7 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
     // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    console.log(hashedPassword);
 
     // Create new user
     const newUser = await prisma.teacher.create({
@@ -110,7 +112,7 @@ export const signIn = async (req: Request, res: Response): Promise<void> => {
     });
 
     if (!user) {
-      res.status(401).json({ error: "Invalid email or password" });
+      res.status(401).json({ error: "User not found" });
       return;
     }
 
