@@ -15,7 +15,7 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5858/users/signin", {
+      const response = await fetch("http://localhost:5000/users/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,8 +146,8 @@ export default function Login() {
           {/* Demo Credentials */}
           <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
             <p className="text-xs text-blue-800 font-medium mb-1">Demo Credentials:</p>
-            <p className="text-xs text-blue-700">Email: tarman@123</p>
-            <p className="text-xs text-blue-700">Password: 12345</p>
+            <p className="text-xs text-blue-700">Email: demouser1@gmail.com</p>
+            <p className="text-xs text-blue-700">Password: demouser@123</p>
             <p className="text-xs text-blue-600 mt-1">Make sure you've inserted this user in your database!</p>
           </div>
           
